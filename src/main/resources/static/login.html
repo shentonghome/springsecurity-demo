@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .tab{
+        text-align: center;
+        width: 500px;
+        margin:0 auto;
+        border:  1px solid #f7f7f7;
+    }
+    .tab_list{
+        background-color: #f7f7f7;
+        border: 1px solid #eee;
+        border-bottom: 1px solid #078171;
+    }
+    ul{
+        padding-inline-start: 0;
+    }
+    li{
+        display: inline;
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    .current{
+        background-color: #078171;
+        color: #fff;
+    }
+    .login{
+        width: 400px;
+        height: 40px;
+        vertical-align: center;
+        line-height: 40px;
+        margin: 0 auto;
+    }
+    .item{
+        display: none;
+        text-align: center;
+    }
+    .title{
+        width: 100px;
+        display: inline-block;
+    }
+</style>
+<body>
+<div class="tab">
+    <div class="tab_list">
+        <ul>
+            <li class="current">登录</li>
+            <li>注册</li>
+        </ul>
+    </div>
+    <div class="table_con">
+        <div class="item" style="display: block;">
+            <div class="input">
+                <br/>
+                <br/>
+                <span class="title">手机号： </span><input type="text">
+                <br/>
+                <br/>
+                <span class="title">密码： </span><input type="password">
+                <br/>
+                <br/>
+                <br/>
+            </div>
+            <div>
+                <div class="current login">登录</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="input">
+                <br/>
+                <br/>
+                <span class="title">手机号： </span><input type="text">
+                <br/>
+                <br/>
+                <span class="title">密码： </span><input type="password">
+                <br/>
+                <br/>
+                <br/>
+            </div>
+            <div >
+                <div class="current login ">注册</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+  var tab_list = document.querySelector('.tab_list');
+  var lis = tab_list.querySelectorAll('li');
+  var items = document.querySelectorAll('.item')
+  // 排他思想 将原来的设置进行修改，剩下的修改成无样式
+  for(var i = 0 ; i < lis.length; i++){
+    lis[i].setAttribute('indexof',i);
+    lis[i].onclick = function(){
+      for(var i = 0 ; i < lis.length; i++){
+        lis[i].className = '';
+      }
+      this.className = 'current';
+      var indexof = this.getAttribute('indexof')
+      for(var i = 0; i < lis.length; i++){
+        items[i].style.display = 'none';
+      }
+      items[indexof].style.display = 'block';
+    }
+  }
+
+</script>
+</html>
